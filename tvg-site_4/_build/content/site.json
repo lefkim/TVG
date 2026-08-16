@@ -1,0 +1,47 @@
+{
+  "name_ko": "테오화랑",
+  "name_en": "TVG",
+  "full_en": "THEODORE VAN GOGH",
+  "opened": "2021-08",
+  "address_ko": "서울특별시 성동구 성수이로6길 11 B1",
+  "address_jibun": "서울특별시 성동구 성수동2가 559-4 B1",
+  "hours": "화 — 일 11:00 — 18:00",
+  "closed": "월요일",
+  "admission": "무료",
+  "tel": "—",
+  "email": "—",
+  "instagram": "—",
+  "subway": "— 호선 — 역 — 번 출구, 도보 —분",
+  "bus": "—",
+  "parking": "—",
+  "access_stairs": "— 계단 / 엘리베이터 여부",
+  "access_wheelchair": "— 관람 가능 여부",
+  "state": "none",
+  "nav": [
+    [
+      "exhibitions",
+      "전시",
+      "Exhibitions"
+    ],
+    [
+      "artists",
+      "작가",
+      "Artists"
+    ],
+    [
+      "about",
+      "화랑소개",
+      "About"
+    ],
+    [
+      "visit",
+      "오시는 길",
+      "Visit"
+    ],
+    [
+      "contact",
+      "대관 및 문의",
+      "Contact"
+    ]
+  ]
+}
