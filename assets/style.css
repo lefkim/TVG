@@ -314,9 +314,9 @@ footer.site{border-top:1.5px solid var(--navy);padding:28px var(--pad) 30px;marg
   h1.pg{font-size:26px}
   .lead{font-size:17px}
   .tbl .r{grid-template-columns:130px 1fr}
-  .arc-row{display:grid;grid-template-columns:64px 1fr 210px 70px;gap:16px;align-items:baseline}
+  .arc-row{display:grid;grid-template-columns:150px 62px 1fr 240px;gap:18px;align-items:baseline}
   .arc-row .top{display:contents}
-  .arc-row .ty{text-align:right}
+  .arc-row .ty{text-align:left}
   .form-mock,.narrow{max-width:600px}
   .mid{max-width:900px}
   .btn-mock{display:inline-block;padding:13px 36px}
@@ -380,3 +380,28 @@ footer.site{border-top:1.5px solid var(--navy);padding:28px var(--pad) 30px;marg
 .exl .t{display:block;font-family:var(--serif);font-size:15px;font-weight:600;color:var(--navy);line-height:1.45}
 .exl .d{display:block;font-size:11px;color:var(--faint);margin-top:4px}
 .exl:hover .t{border-bottom:1.5px solid var(--gold);display:inline-block}
+
+/* ══ 전시 상세: 제목 먼저 ══ */
+.ex-head{padding:26px var(--pad) 22px}
+.ex-head .who{margin-top:13px;font-size:12.5px;color:var(--muted);padding-top:11px;border-top:1px solid var(--hair)}
+.exfig{margin:0 0 4px;padding:0 var(--pad)}
+.exfig .ph{border:1px solid var(--line)}
+.exfig.poster .ph{max-width:min(300px,72vw);margin:0 auto}
+@media(min-width:700px){
+  .ex-head{padding:34px var(--pad) 26px}
+  .exfig.poster .ph{max-width:380px}
+}
+
+/* ══ 홈 전시 목록: 폰에서는 텍스트만 ══ */
+.exh-card .tag{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.exh-card .tag .ty{color:var(--faint);letter-spacing:.14em}
+@media(max-width:699px){
+  .exh-grid{border-top:1.5px solid var(--navy)}
+  .exh-card{grid-template-columns:1fr;gap:0;padding:15px 0}
+  .exh-card .ph{display:none}
+  .exh-card .tag{margin-bottom:5px}
+  .exh-card h3{font-size:15px;margin-bottom:5px}
+}
+
+@media(min-width:700px){ .arc-row .ar{text-align:right;color:var(--muted)} }
+.home .arc{border-top:1.5px solid var(--navy)}

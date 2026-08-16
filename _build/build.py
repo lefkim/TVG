@@ -72,7 +72,7 @@ def img(src, ratio=None, pos='center', alt='', cls='', lazy=True, ph='', sizes='
             f'<img class="im" src="{best}"{ss}{wh} alt="{html.escape(alt)}"{lz} '
             f'style="object-position:{pos}"></div>')
 
-INLINE = True   # True 면 CSS·JS 를 각 페이지에 직접 넣습니다 (assets 폴더 없이도 동작)
+INLINE = False  # True 면 CSS·JS 를 각 페이지에 직접 넣습니다 (assets 폴더 없이도 동작)
 _CSS = _JS = None
 def _load_assets():
     global _CSS,_JS
@@ -154,6 +154,13 @@ def write(path, title, desc, body, active=''):
         head(title,desc,url)+header(active)+body+FOOT)
 
 # ─────────────────────────── 부품
+def exh_row(e):
+    return (f'<a href="/exhibitions/{e["slug"]}/" class="arc-row">'
+            f'<div class="top"><span class="yr">{period(e)}</span>'
+            f'<span class="ty">{TYPE.get(e["type"],"")}</span></div>'
+            f'<div class="ti">{e["title_ko"]}</div>'
+            f'<div class="ar">{e.get("subtitle_ko") or ""}</div></a>')
+
 def exh_card(e):
     href=f"/exhibitions/{e['slug']}/"
     hero=e.get('hero') or {}
@@ -161,7 +168,8 @@ def exh_card(e):
               sizes='(min-width:1000px) 460px, (min-width:700px) 33vw, 110px')
     y,m,_=e['start'].split('-')
     return (f'<a href="{href}" class="exh-card">{thumb}<div>'
-            f'<div class="tag">{y}. {int(m)}</div><h3>{e["title_ko"]}</h3>'
+            f'<div class="tag"><span>{period(e)}</span><span class="ty">{TYPE.get(e["type"],"")}</span></div>'
+            f'<h3>{e["title_ko"]}</h3>'
             f'<div class="sub">{e.get("subtitle_ko") or ""}</div></div></a>')
 
 def art_card(a):
@@ -206,7 +214,7 @@ def page_home():
       <div class="who">{cur.get('subtitle_ko','')}<br>{period(cur)}</div>
       <a href="/exhibitions/{cur['slug']}/" class="more mt">전시 보기</a></div></div>'''
     arts=''.join(art_card(a) for a in ART[:4])
-    cards=''.join(exh_card(e) for e in LIVE[:3])
+    cards=''.join(exh_row(e) for e in EXH[:5])
     body=f'''<div class="home{' st-none' if st=='none' else ''}">
   <div class="h-wrap">{hero}</div>
   <section class="block wide sec-art">
@@ -215,7 +223,7 @@ def page_home():
   </section>
   <section class="block wide sec-exh">
     <div class="head-row"><span class="eyebrow">Exhibitions</span><a href="/exhibitions/" class="more">전체</a></div>
-    <div class="exh-grid">{cards}</div>
+    <div class="arc">{cards}</div>
   </section>
   <section class="block tight mid sec-about">
     <span class="eyebrow">About</span>
@@ -231,12 +239,7 @@ def page_home():
     write('', '테오화랑 TVG', f"테오화랑 · {SITE['address_ko']} · {SITE['opened']} 개관", body)
 
 def page_exhibitions():
-    rows=''
-    for e in EXH:
-        y=e['start'][:4]
-        rows+=(f'<a href="/exhibitions/{e["slug"]}/" class="arc-row">'
-               f'<div class="top"><span class="yr">{y}</span><span class="ty">{TYPE.get(e["type"],"")}</span></div>'
-               f'<div class="ti">{e["title_ko"]}</div><div class="ar">{e.get("subtitle_ko") or ""}</div></a>')
+    rows=''.join(exh_row(e) for e in EXH)
     body=f'''<section class="block wide">
   <h1 class="pg">전시 &nbsp;EXHIBITIONS</h1>
   <div class="arc">{rows}</div>
@@ -246,18 +249,21 @@ def page_exhibitions():
 
 def page_exhibition(e, prev, nxt):
     h=e.get('hero') or {}
-    if h.get('mode')=='poster':
-        hero=f'<div class="hero poster">{img(h["src"],"1838/2600","center",e["title_ko"],lazy=False,sizes="(min-width:700px) 400px, 340px")}</div>'
-    elif h.get('src'):
-        hero=f'<div class="hero">{img(h["src"],None,h.get("pos","center 62%"),e["title_ko"],lazy=False)}</div>'
-    else:
-        hero=''
     ended = bool(e.get('end'))
-    meta=f'''<div class="hero-meta wide">
+    body=f'''<section class="ex-head wide">
     <div class="status past">{'Past Exhibition' if ended else 'Exhibition'}</div>
     <h1 class="exh">{e['title_ko']}</h1>
-    <div class="who">{e.get('subtitle_ko') or ''}<br>{period(e)}{' · 종료' if ended else ''}</div></div>'''
-    body=hero+meta
+    <div class="who">{e.get('subtitle_ko') or ''}<br>{period(e)}{' · 종료' if ended else ''}</div>
+  </section>'''
+    if h.get('src'):
+        if h.get('mode')=='poster':
+            fig=img(h['src'],'1838/2600','center',e['title_ko'],lazy=False,
+                    sizes='(min-width:700px) 400px, 76vw')
+            body+=f'<figure class="exfig poster wide">{fig}</figure>'
+        else:
+            fig=img(h['src'],'3/2',h.get('pos','center 58%'),e['title_ko'],lazy=False,
+                    sizes='(min-width:1000px) 1000px, 100vw')
+            body+=f'<figure class="exfig wide">{fig}</figure>'
     if e.get('stub'):
         who=' · '.join(e.get('participants') or []) or (e.get('subtitle_ko') or '')
         links=''.join(f'<a href="/artists/{s}/" class="more">{BYSLUG[s]["name_ko"]}</a>'
