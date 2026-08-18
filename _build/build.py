@@ -112,8 +112,7 @@ def header(active=''):
         cls=' class="active"' if slug==active else ''
         items+=f'    <a href="/{slug}/"{cls} data-ko="{ko}" data-en="{en}">{ko} <em>{en}</em></a>\n'
     return f'''<header>
-  <div class="util"><span>TEL {SITE['tel']}</span>
-    <span><button id="ko" class="on">KO</button> / <button id="en">EN</button></span></div>
+  <div class="util"><span><button id="ko" class="on">KO</button> / <button id="en">EN</button></span></div>
   <div class="bar">
     <a href="/" class="logo"><svg><use href="#mark"/></svg><span class="txt" id="logoTxt">테오화랑</span></a>
     <button class="burger" id="burger" aria-label="메뉴"><i></i><i></i><i></i></button>
@@ -136,10 +135,10 @@ def _script():
 FOOT = f'''</main>
 <footer class="site">
   <div class="fw">
-    <div><div class="fl"><svg><use href="#mark"/></svg><b>TVG</b></div>테오화랑 · {SITE['full_en']}</div>
-    <div>{SITE['address_ko']}<br>{SITE['hours']} · {SITE['closed']} 휴관</div>
-    <div>TEL {SITE['tel']} &nbsp; MAIL {SITE['email']} &nbsp; {SITE['instagram']}<br>
-      <span style="color:var(--faint)">© 2026 TVG</span></div>
+    <a href="/" class="fl"><svg><use href="#mark"/></svg><b>TVG</b></a>
+    <div class="fname">테오화랑 · {SITE['full_en']}</div>
+    <nav class="fnav">{"".join(f'<a href="/{sl}/">{ko}</a>' for sl,ko,en in SITE['nav'])}</nav>
+    <div class="fcopy">© 2026 TVG</div>
   </div>
 </footer>
 {_script()}
@@ -300,7 +299,7 @@ def page_exhibition(e, prev, nxt):
         ps=''.join(f'<p>{t}</p>' for t in e['statement_ko'])
         by=f'<div class="by">글 · {e["statement_author"]}</div>' if e.get('statement_author') else ''
         body+=f'<section class="block narrow stmt"><span class="eyebrow" style="border-top:none;padding-top:0">서문</span>{ps}{by}</section>'
-    rows=[('기간',period(e)),('장소',f"테오화랑<br>{SITE['address_ko']}")]
+    rows=[('기간',period(e)),('장소','테오화랑')]
     if e.get('participants'): rows.append(('참여작가',' · '.join(e['participants'])))
     if linked: rows.append(('참여작가',' · '.join(a['name_ko'] for a in linked)))
     for k,v in (e.get('credits') or {}).items(): rows.append((k,v))
@@ -391,18 +390,32 @@ def page_about():
     write('about','화랑 소개 — 테오화랑', ABOUT['paras'][0][:120], body, 'about')
 
 def page_visit():
-    rows=[('주소',SITE['address_ko']),('시간',SITE['hours']),('휴관',SITE['closed']),
-          ('관람료',SITE['admission']),('지하철',SITE['subway']),('버스',SITE['bus']),
-          ('주차',SITE['parking']),('전화',SITE['tel'])]
+    T=SITE['transit']
+    tel=f'<a href="tel:{SITE["tel_intl"].replace("-","")}">{SITE["tel"]}</a>'
+    info=tbl([('시간',SITE['hours']),('휴관',SITE['closed']),
+              ('관람료',SITE['admission']),('전화',tel)])
+    move=tbl([('주소',SITE['address_ko']),
+              ('대중교통','<br>'.join(T['public'])),
+              ('자차','<br>'.join(T['car'])),
+              ('주차','<br>'.join(T['parking']))])
+    maps=(f'<div class="maplinks">'
+          f'<a href="{SITE["map_naver"]}" target="_blank" rel="noopener">네이버 지도</a>'
+          f'<a href="{SITE["map_kakao"]}" target="_blank" rel="noopener">카카오맵</a>'
+          f'<a href="{SITE["map_google"]}" target="_blank" rel="noopener">Google Maps</a></div>')
     body=f'''<section class="block wide">
   <h1 class="pg">오시는 길 &nbsp;VISIT</h1>
-  <div class="two"><div>
-    {tbl(rows)}
-    {tbl([('접근',SITE['access_stairs']),('휠체어',SITE['access_wheelchair'])])}
-    <a href="/guide/" class="g-cta"><i>→</i><b>가이드 테오</b>
-      <span>화장실 · 주차 · 커피 · 식사 · 한잔<br>화랑 주변에서 필요한 것들, 그리고 좋아하는 곳들</span></a>
-    <p class="note">관람료는 무료여도 명시합니다. 상업화랑 문턱을 높게 느끼는 사람이 많습니다.</p></div>
-  <div>{img(None,'1/1',ph='지도')}<div style="height:6px"></div>{img(None,'4/3',ph='약도')}</div></div>
+  <div class="two">
+    <div><span class="eyebrow">오는 길</span>{move}
+      <p class="tnote">{T['note']}</p></div>
+    <div><span class="eyebrow">관람</span>{info}</div>
+  </div>
+  {maps}
+</section>
+
+<section class="block tight wide">
+  <a href="/guide/" class="g-cta"><i>&rarr;</i><b>가이드 테오</b>
+    <span>화장실 · 주차 · 커피 · 식사 · 한잔<br>화랑 주변에서 필요한 것들, 그리고 좋아하는 곳들</span></a>
+  <p class="note">관람료는 무료여도 명시합니다. 상업화랑 문턱을 높게 느끼는 사람이 많습니다.</p>
 </section>'''
     write('visit','오시는 길 — 테오화랑', SITE['address_ko'], body, 'visit')
 
@@ -459,7 +472,14 @@ def page_contact():
       <div class="chk"><i></i><span>테오화랑의 전시 소식을 받아보겠습니다.</span></div>
       <a href="#" class="btn-mock">보내기</a>
       <p class="note">영업일 기준 2일 이내에 회신드립니다.</p>
-    </div></div>
+    </div>
+
+    <span class="eyebrow" style="margin-top:44px">연락처</span>
+    {tbl([('전화', f'<a href="tel:{SITE["tel_intl"].replace("-","")}">{SITE["tel"]}</a>'),
+          ('이메일', SITE['email']),
+          ('인스타그램', SITE['instagram']),
+          ('주소', SITE['address_ko'])])}
+    </div>
 </section>'''
     write('contact','대관 및 문의 — 테오화랑','테오화랑 대관 안내 및 문의', body, 'contact')
 

@@ -289,11 +289,21 @@ h1.pg{font-family:var(--serif);font-size:21px;font-weight:700;letter-spacing:.03
 .chk span{font-size:12px;color:var(--muted);line-height:1.65}
 
 /* ══ footer ══ */
-footer.site{border-top:1.5px solid var(--navy);padding:28px var(--pad) 30px;margin-top:44px;background:#FAFAFC}
-.fw{display:grid;gap:20px;font-size:11px;color:var(--muted);line-height:1.9}
-.fl{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;margin-top:60px;background:#FAFAFC}
+.fw{display:flex;flex-direction:column;gap:16px}
+.fl{display:flex;align-items:center;gap:8px}
 .fl svg{width:30px;height:21px}
-.fl b{font-family:var(--serif);font-size:15px;font-weight:600;letter-spacing:.16em;color:var(--navy)}
+.fl b{font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:.18em;color:var(--navy)}
+.fname{font-size:11.5px;letter-spacing:.06em;color:var(--muted)}
+.fnav{display:flex;flex-wrap:wrap;gap:0 18px;padding-top:14px;border-top:1px solid var(--hair)}
+.fnav a{font-size:12px;color:var(--ink)}
+.fnav a:hover{border-bottom:1.5px solid var(--gold)}
+.fcopy{font-size:11px;color:var(--faint);letter-spacing:.05em}
+@media(min-width:700px){
+  .fw{flex-direction:row;align-items:center;flex-wrap:wrap;gap:0 26px}
+  .fnav{border-top:none;padding-top:0;margin-left:auto}
+  .fcopy{width:100%;padding-top:16px;margin-top:4px;border-top:1px solid var(--hair)}
+}
 
 /* ═════════ TABLET ═════════ */
 @media(min-width:700px){
@@ -422,3 +432,5 @@ footer.site{border-top:1.5px solid var(--navy);padding:28px var(--pad) 30px;marg
 .tnote{font-size:12px;color:var(--muted);line-height:1.8;margin-top:14px;
   border-left:2px solid var(--gold);padding-left:12px}
 .tbl .v b{font-weight:600;color:var(--navy)}
+
+.tbl .v a[href^="tel:"]{color:var(--navy);border-bottom:1.5px solid var(--gold);padding-bottom:1px}

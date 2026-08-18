@@ -8,14 +8,9 @@
   "hours": "화 — 일 11:00 — 18:00",
   "closed": "월요일",
   "admission": "무료",
-  "tel": "—",
+  "tel": "010-2012-8445",
   "email": "—",
   "instagram": "—",
-  "subway": "— 호선 — 역 — 번 출구, 도보 —분",
-  "bus": "—",
-  "parking": "—",
-  "access_stairs": "— 계단 / 엘리베이터 여부",
-  "access_wheelchair": "— 관람 가능 여부",
   "state": "none",
   "nav": [
     [
@@ -43,5 +38,23 @@
       "대관 및 문의",
       "Contact"
     ]
-  ]
+  ],
+  "map_naver": "https://naver.me/FSwfGOK9",
+  "map_kakao": "https://kko.to/2fMKs90UsV",
+  "map_google": "https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%84%B1%EB%8F%99%EA%B5%AC%20%EC%84%B1%EC%88%98%EC%9D%B4%EB%A1%9C6%EA%B8%B8%2011",
+  "transit": {
+    "public": [
+      "(1) 성수역 3번 출구에서 도보 (약 15분 소요)",
+      "(2) 뚝섬역 5번 출구에서 2413 또는 2224 이용,<br>뚝도시장 하차 후 도보 (약 5분 소요)"
+    ],
+    "car": [
+      "네비게이션에 <b>테오화랑</b> 또는 <b>성수이로6길 11</b> 입력"
+    ],
+    "parking": [
+      "100m 인근에 성수2가1동공영주차장이 있습니다.",
+      "<span class=\"tone\">서울 성동구 성덕정길 115</span>"
+    ],
+    "note": "※ 화랑은 건물 지하 1층에 위치해 있습니다. 건물 오른쪽 입구로 들어오세요."
+  },
+  "tel_intl": "+82-10-2012-8445"
 }
