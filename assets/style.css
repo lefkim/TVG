@@ -434,3 +434,18 @@ footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;marg
 .tbl .v b{font-weight:600;color:var(--navy)}
 
 .tbl .v a[href^="tel:"]{color:var(--navy);border-bottom:1.5px solid var(--gold);padding-bottom:1px}
+
+/* ══ Media & Press ══ */
+.press{border-top:1.5px solid var(--navy)}
+.pr-row{padding:14px 0;border-bottom:1px solid var(--hair)}
+.pr-row .top{display:flex;gap:12px;align-items:baseline;margin-bottom:5px}
+.pr-row .dt{font-size:11px;color:var(--faint);letter-spacing:.06em}
+.pr-row .ou{font-size:11px;color:var(--navy);letter-spacing:.08em;font-weight:600}
+.pr-row .ti{font-family:var(--serif);font-size:14.5px;line-height:1.6;color:var(--ink)}
+.pr-row .ti a{border-bottom:1.5px solid var(--gold);padding-bottom:1px}
+@media(min-width:700px){
+  .pr-row{display:grid;grid-template-columns:96px 88px 1fr;gap:18px;align-items:baseline}
+  .pr-row .top{display:contents}
+  .pr-row .dt,.pr-row .ou{margin:0}
+}
+.more.dl{white-space:nowrap}
