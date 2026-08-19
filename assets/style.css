@@ -393,7 +393,7 @@ footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;marg
 /* ══ 전시 상세: 제목 먼저 ══ */
 .ex-head{padding:26px var(--pad) 22px}
 .ex-head .who{margin-top:13px;font-size:12.5px;color:var(--muted);padding-top:11px;border-top:1px solid var(--hair)}
-.exfig{margin:0 0 4px;padding:0 var(--pad)}
+.exfig{margin:0 auto 4px;padding:0 var(--pad)}
 .exfig .ph{border:1px solid var(--line)}
 .exfig.poster .ph{max-width:min(300px,72vw);margin:0 auto}
 @media(min-width:700px){
@@ -501,3 +501,31 @@ footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;marg
   letter-spacing:.06em;color:var(--faint)}
 .tbl .r a{color:var(--navy);border-bottom:1.5px solid var(--gold);padding-bottom:1px}
 @media(min-width:700px){.stnote .poem span{font-size:13.5px}}
+
+/* ══ 이미지 확대 보기 ══ */
+.zoomable{cursor:zoom-in}
+#lb{position:fixed;inset:0;z-index:200;background:rgba(8,9,18,.985);
+  display:none;align-items:center;justify-content:center;flex-direction:column;padding:28px 16px}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:calc(100vh - 120px);object-fit:contain;
+  opacity:0;transition:opacity .22s ease}
+#lb.rdy img{opacity:1}
+#lb .cap{color:#C9CBD6;font-size:11px;letter-spacing:.06em;margin-top:16px;text-align:center}
+#lb .cap b{color:#fff;font-weight:400}
+#lb button{position:absolute;background:none;border:none;color:#fff;cursor:pointer;
+  font-family:var(--sans);line-height:1}
+#lb .cl{top:14px;right:16px;font-size:26px;padding:6px 10px}
+#lb .pv,#lb .nx{top:50%;transform:translateY(-50%);font-size:30px;padding:16px 14px;color:#9A9DB2}
+#lb .pv:hover,#lb .nx:hover,#lb .cl:hover{color:var(--gold)}
+#lb .pv{left:4px} #lb .nx{right:4px}
+@media(prefers-reduced-motion:reduce){#lb img{transition:none}}
+#lb:focus{outline:none}
+#lb button:focus{outline:none}
+#lb button:focus-visible{outline:1px solid var(--gold);outline-offset:2px}
+@media(max-width:699px){
+  #lb{padding:20px 12px 76px}
+  #lb img{max-height:calc(100vh - 170px)}
+  #lb .pv,#lb .nx{top:auto;bottom:14px;transform:none;font-size:26px;padding:10px 16px}
+  #lb .pv{left:10px} #lb .nx{right:10px}
+  #lb .cap{position:absolute;bottom:22px;left:0;right:0}
+}
