@@ -563,3 +563,12 @@ footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;marg
   box-shadow:0 1px 0 rgba(22,24,43,.06)}
 @media(min-width:700px){.wim{height:340px;padding:18px}}
 @media(min-width:1000px){.wim{height:300px}}
+
+/* ══ 서문 소제목 · 본문 인용 ══ */
+.stmt .stsec{font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--navy);font-weight:700;margin:38px 0 16px;padding-top:14px;
+  border-top:1px solid var(--hair)}
+.stmt .pull{margin:26px 0;padding:0 0 0 16px;border-left:2px solid var(--gold);
+  font-family:var(--serif);font-size:14.5px;line-height:1.95;color:var(--navy)}
+.stmt .pull cite{display:block;font-style:normal;margin-top:10px;font-size:11px;
+  letter-spacing:.06em;color:var(--faint);font-family:var(--sans)}
