@@ -529,3 +529,21 @@ footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;marg
   #lb .pv{left:10px} #lb .nx{right:10px}
   #lb .cap{position:absolute;bottom:22px;left:0;right:0}
 }
+
+/* ══ 홈: 다음 전시 ══ */
+.next{display:grid;grid-template-columns:1fr;gap:26px;padding:34px var(--pad) 8px}
+.next .np .ph{border:1px solid var(--line);max-width:min(300px,74vw)}
+.next .nt{display:flex;flex-direction:column;align-items:flex-start}
+.next h1.exh{margin:14px 0 12px}
+.next .who{font-size:13px;color:var(--muted);line-height:1.9;padding-top:12px;border-top:1px solid var(--hair);width:100%;max-width:340px}
+.next .op{margin-top:18px;padding-top:14px;border-top:1px solid var(--hair);
+  font-size:13px;color:var(--ink)}
+.next .op span{display:block;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--faint);margin-bottom:5px}
+.status.upcoming{background:none;border:1px solid var(--gold);color:var(--navy);font-weight:700}
+.status.current{background:none;border:1px solid var(--navy);color:var(--navy);font-weight:700}
+@media(min-width:700px){
+  .next{grid-template-columns:300px 1fr;gap:44px;align-items:center;
+    max-width:1400px;margin:0 auto;padding-top:54px}
+  .next .np .ph{max-width:300px}
+}
