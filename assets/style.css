@@ -585,3 +585,44 @@ footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;marg
   margin-bottom:16px;letter-spacing:-.005em}
 .g-more .mapbtn{margin-top:2px}
 @media(min-width:700px){.g-more .tx{font-size:14px}}
+
+.g-intro b{display:block;font-family:var(--serif);font-size:15px;font-weight:600;
+  color:var(--navy);margin-bottom:8px;letter-spacing:-.01em}
+@media(min-width:700px){.g-intro b{font-size:16.5px}}
+
+/* 가이드 — 뚝도 유래 (접이식) */
+.orig{margin:18px var(--pad) 0;max-width:640px;border-top:1px solid var(--hair)}
+.orig summary{list-style:none;cursor:pointer;padding:13px 0;display:flex;
+  justify-content:space-between;align-items:center}
+.orig summary::-webkit-details-marker{display:none}
+.orig summary .lb{font-size:12px;letter-spacing:.01em;color:var(--navy);font-weight:700}
+.orig summary::after{content:'+';color:var(--gold);font-size:15px;line-height:1}
+.orig[open] summary::after{content:'\2212'}
+.orig[open] summary{border-bottom:1px solid var(--hair)}
+.obody{padding:22px 0 8px}
+.obody p{font-family:var(--serif);font-size:13.5px;line-height:1.95;
+  color:var(--ink);margin-bottom:14px}
+.obody p:last-child{margin-bottom:0}
+.obody .osrc{margin-top:18px;font-family:var(--sans);font-size:11px;
+  letter-spacing:.01em;color:#6A6D80}
+@media(min-width:700px){.orig{margin:22px 0 0;padding:0}
+  .obody p{font-size:14px}}
+
+/* 가이드 — 도입 본문 */
+.g-intro{padding:20px 17px}
+.g-intro b{margin-bottom:14px}
+.g-intro p{font-family:var(--serif);font-size:13.5px;line-height:1.95;
+  color:var(--ink);margin-bottom:13px}
+.g-intro .itail{margin-top:16px;padding-top:13px;border-top:1px solid var(--hair);
+  font-size:12px;color:var(--muted);letter-spacing:.01em}
+@media(min-width:700px){.g-intro{padding:28px 26px;max-width:720px}
+  .g-intro p{font-size:14.5px}}
+.g-intro .inote{position:relative;margin-top:18px;padding-top:16px;
+  border-top:1px solid var(--hair);color:var(--muted);font-size:12.8px;line-height:1.9}
+.g-intro .inote::before{content:'*';color:var(--gold);margin-right:5px;font-family:var(--sans)}
+@media(min-width:700px){.g-intro .inote{font-size:13.5px}}
+
+/* 가이드 — 머리글 없는 도입부 (본문처럼) */
+.g-intro.plain{background:none;border:none;padding:0;max-width:660px}
+.g-intro.plain .itail{margin-top:20px}
+@media(min-width:700px){.g-intro.plain{padding:0}}
