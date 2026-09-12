@@ -635,7 +635,7 @@ footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;marg
 @media(min-width:700px){.g-intro.plain .inote{margin-top:34px}}
 
 /* 대관 — 평면도 */
-.planwrap{max-width:760px;margin:0 auto}
+.planwrap{max-width:760px}
 .planwrap .wim{height:auto;background:#fff;border:1px solid var(--hair);padding:18px}
 .planwrap .wim img{width:100%;height:auto;box-shadow:none}
 .pcred{margin-top:12px;font-size:10.5px;letter-spacing:.06em;color:var(--faint);text-align:right}
