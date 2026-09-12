@@ -626,3 +626,10 @@ footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;marg
 .g-intro.plain{background:none;border:none;padding:0;max-width:660px}
 .g-intro.plain .itail{margin-top:20px}
 @media(min-width:700px){.g-intro.plain{padding:0}}
+
+/* 가이드 — 편 제목 */
+.gedit{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--navy);
+  letter-spacing:-.01em;margin:-16px 0 24px}
+@media(min-width:700px){.gedit{font-size:22px;margin:-18px 0 28px}}
+.g-intro.plain .inote{margin-top:30px;padding-top:0;border-top:none}
+@media(min-width:700px){.g-intro.plain .inote{margin-top:34px}}
