@@ -642,3 +642,6 @@ footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;marg
 @media(min-width:700px){.planwrap .wim{padding:26px}}
 .fnav a.ig{color:var(--muted);letter-spacing:.02em}
 .fnav a.ig:hover{color:var(--ink);border-bottom:1.5px solid var(--gold)}
+a.r{color:inherit}
+.together a.r span:nth-child(2){border-bottom:1px solid transparent;justify-self:start;transition:border-color .2s}
+.together a.r:hover span:nth-child(2){border-bottom-color:var(--gold)}
