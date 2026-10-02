@@ -640,3 +640,5 @@ footer.site{border-top:1.5px solid var(--navy);padding:34px var(--pad) 30px;marg
 .planwrap .wim img{width:100%;height:auto;box-shadow:none}
 .pcred{margin-top:12px;font-size:10.5px;letter-spacing:.06em;color:var(--faint);text-align:right}
 @media(min-width:700px){.planwrap .wim{padding:26px}}
+.fnav a.ig{color:var(--muted);letter-spacing:.02em}
+.fnav a.ig:hover{color:var(--ink);border-bottom:1.5px solid var(--gold)}
